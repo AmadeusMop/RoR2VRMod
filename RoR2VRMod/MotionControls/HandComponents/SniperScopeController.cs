@@ -225,12 +225,13 @@ namespace VRMod
 
         private void OnDisable()
         {
-            if (!ModConfig.RailgunnerKeepScopeVisible.Value)
+            if (ModConfig.RailgunnerKeepScopeVisible.Value)
             {
-                scopeViewRenderer.material = clearMaterial;
+                // Scope rendering should never be disabled in this case
+                this.enabled = true;
             } else
             {
-                this.enabled = true;
+                scopeViewRenderer.material = clearMaterial;
             }
         }
 
